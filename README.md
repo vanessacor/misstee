@@ -17,3 +17,9 @@ I enjoyed so much building this game and in the process I've learnt how to work 
 - animating elements
 - managing all collisions between elements.
 
+## Demo
+
+![Demo](demo.gif)
+
+![img2](img2.png)
+
