@@ -52,6 +52,8 @@ h2 {
 }
 
 p {
+  margin-top: 0;
+  margin-bottom: 1em;
   font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
   font-weight: bold;
 }
@@ -260,8 +262,7 @@ a {
   }
 }
 
-#final-score {
-  margin: 0 0 10px 0;
+.scores {
   font-size: 22px;
 }
 

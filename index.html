@@ -1,83 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Misstee</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+    />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Mansalva|Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <title>Misstee</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-  <link href="style.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Mansalva|Montserrat&display=swap" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
-</head>
+  <body>
+    <header id="site-header" class="container">
+      <h1 id="tmp">Misstee</h1>
+    </header>
 
-<body>
-  <header id="site-header" class="container">
-    <h1 id="tmp">Misstee</h1>
-  </header>
-
-  <main id="site-main" class="container">
-    <section class="splash">
-      <p>Press Misstee's paw to play</p>
-      <button class="button" id="play-button">
+    <main id="site-main" class="container">
+      <section class="splash">
+        <p>Press Misstee's paw to play</p>
+        <button class="button" id="play-button">
           <i class="fas fa-paw"></i>
-      </button>
-      <div id="game-settings">
-        <button class="button" id="sound">
-          Sound <br>Off
         </button>
-        <button class="button" id="game-info">
-          How to <br>Play
-        </button>
+        <div id="game-settings">
+          <button class="button" id="sound">Sound <br />Off</button>
+          <button class="button" id="game-info">How to <br />Play</button>
+        </div>
+      </section>
+
+      <section class="game">
+        <div id="canvas-wrapper">
+          <canvas id="my-canvas"></canvas>
+          <img src="images/cat.png" id="cat" />
+          <img src="images/food.png" id="food" />
+          <img src="images/poison.png" id="poison" />
+          <audio src="sounds/bensound-cute.mp3" id="game-music"></audio>
+          <audio
+            src="sounds/Blastwave_FX_CatMeow_SFXB.203.mp3"
+            id="cat-meow"
+          ></audio>
+          <audio
+            src="sounds/zapsplat_multimedia_game_sound_mallet_generic_017_40858.mp3"
+            id="cat-eat"
+          ></audio>
+        </div>
+        <p id="score">Score: 0</p>
+        <ul id="lives">
+          <li>
+            <i class="fas fa-heart"></i>
+          </li>
+          <li>
+            <i class="fas fa-heart"></i>
+          </li>
+          <li>
+            <i class="fas fa-heart"></i>
+          </li>
+        </ul>
+      </section>
+
+      <div id="rotate-screen">
+        <p>I work better in landscape</p>
+        <i class="fas fa-redo-alt"></i>
+        <p>Please rotate your phone</p>
       </div>
-    </section>
 
-    <section class="game">
-      <div id="canvas-wrapper">
-        <canvas id="my-canvas"></canvas>
-        <img src="images/cat.png" id="cat">
-        <img src="images/food.png" id="food">
-        <img src="images/poison.png" id="poison">
-        <audio src="sounds/bensound-cute.mp3" id="game-music"></audio>
-        <audio src="sounds/Blastwave_FX_CatMeow_SFXB.203.mp3" id="cat-meow"></audio>
-        <audio src="sounds/zapsplat_multimedia_game_sound_mallet_generic_017_40858.mp3" id="cat-eat"></audio>
-      </div>
-      <p id="score">Score: 0</p>
-      <ul id="lives">
-        <li>
-          <i class="fas fa-heart"></i>
-        </li>
-        <li>
-          <i class="fas fa-heart"></i>
-        </li>
-        <li>
-          <i class="fas fa-heart"></i>
-        </li>
-      </ul>
-    </section>
+      <section class="game-over">
+        <h2>Game Over!</h2>
+        <img src="images/cat-face.png" id="dead-cat" />
+        <div>
+          <p>Final Score: <span class="scores" id="final-score">0</span></p>
+          <p>Your best Score: <span class="scores" id="best-score">0</span></p>
+        </div>
 
-    <div id="rotate-screen">
-      <p>I work better in landscape</p>
-      <i class="fas fa-redo-alt"></i>
-      <p>Please rotate your phone</p>
-    </div>
+        <button class="button" id="restart-button">Play<br />Again</button>
+      </section>
+    </main>
 
-    <section class="game-over">
-      <h2>Game Over!</h2>
-      <img src="images/cat-face.png" id="dead-cat">
-      <p id="final-score">0</p>
-      <button class="button" id="restart-button">Play<br>Again</button>
-    </section>
-
-  </main>
-
-  <script src="scripts/misstee.js"></script>
-  <script src="scripts/misstee-ui.js"></script>
-  <script src="scripts/game.js"></script>
-  <script src="scripts/cat.js"></script>
-  <script src="scripts/food.js"></script>
-  <script src="scripts/poison.js"></script>
-  <script src="scripts/game-ui.js"></script>
-  <script src="scripts/utils.js"></script>
-  <script src="https://vanessacor.github.io/site/scripts/banner.js"></script>
+    <script src="scripts/misstee.js"></script>
+    <script src="scripts/misstee-ui.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/cat.js"></script>
+    <script src="scripts/food.js"></script>
+    <script src="scripts/poison.js"></script>
+    <script src="scripts/game-ui.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="https://vanessacor.github.io/site/scripts/banner.js"></script>
   </body>
 </html>
