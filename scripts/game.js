@@ -136,34 +136,51 @@ class Game {
     this.generatePoisons(elementHeight, x);
   }
 
-  generatePoisons(elementHeight, x) {
-    const numberOfPoisons = Math.floor(
-      NUMBER_OF_POISONS_TO_GENERATE * this.levelOfDifficulty
-    );
+  getNumberOfElementToGenerate(isPoison) {
+    const numberOfElementsToGenerate = isPoison
+      ? NUMBER_OF_POISONS_TO_GENERATE
+      : NUMBER_OF_FOODS_TO_GENERATE;
 
-    for (let i = 0; i < numberOfPoisons; i++) {
-      const poisonY = Utils.randomIntFromRange(
+    return Math.floor(numberOfElementsToGenerate * this.levelOfDifficulty);
+  }
+
+  generateGameElements(element) {
+    const isPoison = element.type === "poison";
+
+    const numberOfElements = this.getNumberOfElementToGenerate(isPoison);
+
+    for (let i = 0; i < numberOfElements; i++) {
+      const elementY = Utils.randomIntFromRange(
         0,
-        this.canvasHeight - elementHeight
+        this.canvasHeight - element.height
       );
-      const poisonDx = Utils.randomIntFromRange(1, MAX_SPEED);
-      this.poisons.push(new Poison(this.ctx, x, poisonY, poisonDx));
+      const elementDx = Utils.randomIntFromRange(1, MAX_SPEED);
+      const newElement = isPoison
+        ? new Poison(this.ctx, element.positionX, elementY, elementDx)
+        : new Food(this.ctx, element.positionX, elementY, elementDx);
+
+      element.array.push(newElement);
     }
+  }
+  generatePoisons(elementHeight, x) {
+    const poisonObject = {
+      array: this.poisons,
+      height: elementHeight,
+      positionX: x,
+      type: "poison",
+    };
+
+    this.generateGameElements(poisonObject);
   }
 
   generateFoods(elementHeight, x) {
-    const numberOfFoods = Math.floor(
-      NUMBER_OF_POISONS_TO_GENERATE * this.levelOfDifficulty
-    );
-
-    for (let i = 0; i < numberOfFoods; i++) {
-      const foodY = Utils.randomIntFromRange(
-        0,
-        this.canvasHeight - elementHeight
-      );
-      const foodDx = Utils.randomIntFromRange(1, MAX_SPEED);
-      this.foods.push(new Food(this.ctx, x, foodY, foodDx));
-    }
+    const foodObject = {
+      array: this.foods,
+      height: elementHeight,
+      positionX: x,
+      type: "food",
+    };
+    this.generateGameElements(foodObject);
   }
 
   generateMoreElements() {
