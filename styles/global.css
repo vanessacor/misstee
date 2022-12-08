@@ -30,6 +30,3 @@ header {
   font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
 }
 
-.button:hover {
-  background-color: #39332b;
-}
