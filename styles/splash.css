@@ -69,5 +69,43 @@
 }
 
 #game-info {
-  margin-left: 10px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  #game-info{
+    max-width: 300px;
+  }
+}
+#game-info button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 1em;
+}
+#game-info .info-closed {
+  background-color: var(--highlight-color);
+  color: var(--main-font-color-color)
+}
+
+#game-info .info-open {
+  background-color: var(--secondary-font-color);
+  color: var(--main-font-color);
+}
+
+#instructions {
+  display: none;
+  background-color: var(--main-font-color);
+  padding: 8px;
+  margin-top: -2px;
+
+}
+#instructions p {
+  font-size: 1em;
+  color: var(--secondary-font-color);
+  letter-spacing: normal;
+  text-align: justify;
 }

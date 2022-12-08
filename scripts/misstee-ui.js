@@ -8,10 +8,14 @@ class MissteeUI {
     this.gameOver = document.querySelector(".game-over");
     this.finalScoreDisplay = document.getElementById("final-score");
     this.gameWrapper = document.getElementById("canvas-wrapper");
-    this.soundOn = document.getElementById("sound");
+    this.toogleSound = document.getElementById("sound");
+    this.soundOn = document.getElementById("sound-on");
+    this.soundOff = document.getElementById("sound-off");
     this.restartButton = document.getElementById("restart-button");
     this.finalScoreDisplay = document.getElementById("final-score");
     this.bestScoreDisplay = document.getElementById("best-score");
+    this.showGameInfo = document.getElementById("show-info");
+    this.instructions = document.getElementById("instructions");
 
     this.getBestScore();
     this.sound = "off";
@@ -20,11 +24,23 @@ class MissteeUI {
   }
 
   _bindEventListeners() {
-    this.soundOn.addEventListener("click", () => this.turnMusicOnAndOff());
+    this.toogleSound.addEventListener("click", () => this.turnMusicOnAndOff());
+    this.showGameInfo.addEventListener("click", () => this.toggleInfo());
     this.playButton.addEventListener("click", () => this.startGame());
     this.restartButton.addEventListener("click", () => this.restartGame());
   }
 
+  toggleInfo() {
+    if (this.instructions.style.display !== "block") {
+      this.instructions.style.display = "block";
+      this.showGameInfo.removeAttribute("info-closed");
+      this.showGameInfo.setAttribute("class", "info-open");
+    } else {
+      this.instructions.style.display = "none";
+      this.showGameInfo.removeAttribute("info-open");
+      this.showGameInfo.setAttribute("class", "info-closed");
+    }
+  }
   getBestScore() {
     const score =
       localStorage.getItem("bestScore") ?? localStorage.setItem("bestScore", 0);
@@ -41,12 +57,12 @@ class MissteeUI {
   turnMusicOnAndOff() {
     if (this.sound === "off") {
       this.sound = "on";
-      this.soundOn.innerHTML = "Sound <br>On";
-      this.soundOn.classList.add("sound-on");
+      this.soundOn.style.display = "none";
+      this.soundOff.style.display = "block";
     } else {
       this.sound = "off";
-      this.soundOn.innerHTML = "Sound <br>Off";
-      this.soundOn.classList.remove("sound-on");
+      this.soundOff.style.display = "none";
+      this.soundOn.style.display = "block";
     }
   }
 
