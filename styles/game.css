@@ -1,0 +1,66 @@
+.game {
+  display: none;
+  grid-template-columns: 30% 40% 30%;
+  grid-template-rows: auto 13%;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .game {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
+
+#canvas-wrapper {
+  grid-column: 1 / 4;
+  grid-row: 1;
+}
+
+#my-canvas {
+  margin: 0 auto; 
+  background: #dcdfd7; 
+}
+
+#cat, #food, #poison {
+  display: none;
+}
+
+#score {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#lives {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#score, #lives {
+  margin: 0;
+  align-self: center;
+  justify-self: center;
+  font-size: calc(18px + (38 - 18) * ((100vw - 300px) / (1600 - 300)));
+  user-select: none;
+}
+
+#lives li {
+  display: inline-block;
+  color: var(--highlight-color);
+}
+
+#rotate-screen {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  text-align: center;
+  color: black;
+  background-color: #ffc0cb9c;
+}
+
+#rotate-screen i {
+  font-size: 36px;
+}

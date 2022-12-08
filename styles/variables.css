@@ -1,0 +1,16 @@
+:root {
+  --main-bg-color: #9e7c65;
+  --highlight-color: #ff8889;
+  --contrast-color: #39332b;
+  --main-font-color: #f0f3ec;
+  --secondary-font-color: #72757e;
+  --highlight-font-color: #dcdfd7;
+
+  --font-primary: 'Montserrat', sans-serif;
+  --font-page-title: 'Mansalva', cursive;
+  
+  --font-base-size: 1em;
+  --font-scale-ration: 1.2;
+
+  --base-line-height: 1.5em;
+}

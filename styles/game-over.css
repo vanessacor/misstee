@@ -1,0 +1,26 @@
+.game-over {
+  display: none;
+  text-align: center;
+}
+
+.game-over h2 {
+  margin-bottom: 20px;
+}
+
+
+#dead-cat {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  #dead-cat {
+    width: 180px;
+  }
+}
+
+
+#restart-button {
+  color: var(--secondary-font-color);
+  background-color: var(--highlight-color);
+}

@@ -1,0 +1,32 @@
+html {
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  line-height: var(--base-line-height);
+}
+
+a {
+  text-decoration: none;
+}
+
+img, picture, video, canvas, svg  {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}

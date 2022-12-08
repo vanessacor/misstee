@@ -1,0 +1,52 @@
+.splash {
+  display: block;
+  position: relative;
+  text-align: center;
+}
+
+.splash p {
+  margin-bottom: 30px;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .splash p  {
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .splash button {
+    padding-top: 20px;
+  }
+}
+
+#play-button {
+  margin-bottom: 20px;
+}
+
+#play-button i {
+  color: var(--highlight-color);
+  font-size: calc(90px + (120 - 90) * ((100vw - 300px) / (1600 - 300)));
+}
+
+#play-button i:hover {
+  color: var(--contrast-color);
+}
+
+#game-settings button {
+  color: var(--secondary-font-color);
+  background-color: var(--highlight-color);
+}
+
+#game-settings button:focus {
+  outline: none;
+}
+
+#sound.sound-on {
+  background-color: rgb(119, 111, 111);
+}
+
+#game-info {
+  margin-left: 10px;
+}
