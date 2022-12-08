@@ -13,7 +13,7 @@ class MissteeUI {
     this.finalScoreDisplay = document.getElementById("final-score");
     this.bestScoreDisplay = document.getElementById("best-score");
 
-    this.scores = this.getBestScore();
+    this.getBestScore();
     this.sound = "off";
     this.orientationEventListener = null;
     this._bindEventListeners();
@@ -34,7 +34,6 @@ class MissteeUI {
 
   updateBestScore(score) {
     if (this.getBestScore() < score) {
-      this.scores = score;
       localStorage.setItem("bestScore", score);
     } else return;
   }
