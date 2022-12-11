@@ -3,6 +3,7 @@
   grid-template-columns: 30% 40% 30%;
   grid-template-rows: auto 13%;
   height: 100%;
+  
 }
 
 @media (min-width: 768px) {
@@ -20,6 +21,7 @@
 #my-canvas {
   margin: 0 auto; 
   background: #dcdfd7; 
+  user-select: none;
 }
 
 #cat, #food, #poison {

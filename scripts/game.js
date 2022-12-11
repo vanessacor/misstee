@@ -183,11 +183,16 @@ class Game {
     this.generateGameElements(foodObject);
   }
 
+  updateLevelOfDifficulty() {
+    this.levelOfDifficulty += 0.1;
+    if (this.score > 10) this.levelOfDifficulty = Math.random() * (5 - 1) + 1;
+  }
+
   generateMoreElements() {
     const timeToGenerateMore = GENERATE_MORE_TIMER / this.levelOfDifficulty;
 
     if (this.timer > timeToGenerateMore) {
-      this.levelOfDifficulty += 0.1;
+      this.updateLevelOfDifficulty();
 
       this.generateElements();
       this.timer = 0;
