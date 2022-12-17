@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 class Food {
-  constructor (ctx, x, y, dx) {
+  constructor(ctx, x, y, dx) {
     this.ctx = ctx;
     this.x = x;
     this.y = y;
@@ -9,20 +9,19 @@ class Food {
     this.active = true;
     this.width = 10;
     this.height = 10;
-    this.colors = ['pink'];
-    this.color = Utils.generateColor(this.colors);
-    this.image = document.getElementById('food');
+    this.color = "pink";
+    this.image = document.getElementById("food");
   }
 
-  deactivate () {
+  deactivate() {
     this.active = false;
   }
 
-  draw () {
+  draw() {
     this.ctx.drawImage(this.image, this.x, this.y);
   }
 
-  update () {
+  update() {
     this.draw();
     this.x += -this.dx;
   }

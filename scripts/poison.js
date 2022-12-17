@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 class Poison {
-  constructor (ctx, x, y, dx) {
+  constructor(ctx, x, y, dx) {
     this.ctx = ctx;
     this.x = x;
     this.y = y;
@@ -9,20 +9,19 @@ class Poison {
     this.active = true;
     this.height = 10;
     this.width = 10;
-    this.colors = ['red', 'brown', 'green'];
-    this.color = 'black';
-    this.image = document.getElementById('poison');
+    this.color = "black";
+    this.image = document.getElementById("poison");
   }
 
-  deactivate () {
+  deactivate() {
     this.active = false;
   }
 
-  draw () {
+  draw() {
     this.ctx.drawImage(this.image, this.x, this.y);
   }
 
-  update () {
+  update() {
     this.draw();
     this.x += -this.dx;
   }

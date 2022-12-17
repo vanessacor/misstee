@@ -5,43 +5,48 @@ class MissteeUI {
     this.splash = document.querySelector(".splash");
     this.gameScreen = document.querySelector(".game");
     this.playButton = document.getElementById("play-button");
-    this.gameOver = document.querySelector(".game-over");
+    this.gameOverScreen = document.querySelector(".game-over");
     this.finalScoreDisplay = document.getElementById("final-score");
     this.gameWrapper = document.getElementById("canvas-wrapper");
-    this.toogleSound = document.getElementById("sound");
-    this.soundOn = document.getElementById("sound-on");
-    this.soundOff = document.getElementById("sound-off");
+    this.toogleSoundButton = document.getElementById("sound");
+    this.soundOnButton = document.getElementById("sound-on");
+    this.soundOffButton = document.getElementById("sound-off");
     this.restartButton = document.getElementById("restart-button");
     this.finalScoreDisplay = document.getElementById("final-score");
     this.bestScoreDisplay = document.getElementById("best-score");
-    this.showGameInfo = document.getElementById("show-info");
-    this.instructions = document.getElementById("instructions");
+    this.showGameInfoButton = document.getElementById("show-info");
+    this.instructionsPanel = document.getElementById("instructions");
 
-    this.getBestScore();
+    this.showBestScore();
     this.sound = "off";
     this.orientationEventListener = null;
     this._bindEventListeners();
   }
 
   _bindEventListeners() {
-    this.toogleSound.addEventListener("click", () => this.turnMusicOnAndOff());
-    this.showGameInfo.addEventListener("click", () => this.toggleInfo());
+    this.toogleSoundButton.addEventListener("click", () =>
+      this.toggleMusicOn()
+    );
+    this.showGameInfoButton.addEventListener("click", () =>
+      this.toggleShowInfo()
+    );
     this.playButton.addEventListener("click", () => this.startGame());
     this.restartButton.addEventListener("click", () => this.restartGame());
   }
 
-  toggleInfo() {
-    if (this.instructions.style.display !== "block") {
-      this.instructions.style.display = "block";
-      this.showGameInfo.removeAttribute("info-closed");
-      this.showGameInfo.setAttribute("class", "info-open");
+  toggleShowInfo() {
+    if (this.instructionsPanel.style.display !== "block") {
+      this.instructionsPanel.style.display = "block";
+      this.showGameInfoButton.removeAttribute("info-closed");
+      this.showGameInfoButton.setAttribute("class", "info-open");
     } else {
-      this.instructions.style.display = "none";
-      this.showGameInfo.removeAttribute("info-open");
-      this.showGameInfo.setAttribute("class", "info-closed");
+      this.instructionsPanel.style.display = "none";
+      this.showGameInfoButton.removeAttribute("info-open");
+      this.showGameInfoButton.setAttribute("class", "info-closed");
     }
   }
-  getBestScore() {
+
+  showBestScore() {
     const score =
       localStorage.getItem("bestScore") ?? localStorage.setItem("bestScore", 0);
     this.bestScoreDisplay.innerHTML = score;
@@ -49,20 +54,20 @@ class MissteeUI {
   }
 
   updateBestScore(score) {
-    if (this.getBestScore() < score) {
+    if (this.showBestScore() < score) {
       localStorage.setItem("bestScore", score);
     } else return;
   }
 
-  turnMusicOnAndOff() {
+  toggleMusicOn() {
     if (this.sound === "off") {
       this.sound = "on";
-      this.soundOn.style.display = "none";
-      this.soundOff.style.display = "block";
+      this.soundOnButton.style.display = "none";
+      this.soundOffButton.style.display = "block";
     } else {
       this.sound = "off";
-      this.soundOff.style.display = "none";
-      this.soundOn.style.display = "block";
+      this.soundOffButton.style.display = "none";
+      this.soundOnButton.style.display = "block";
     }
   }
 
@@ -102,26 +107,27 @@ class MissteeUI {
   showGameOver(score) {
     removeEventListener("orientationchange", this.orientationEventListener);
     this.gameScreen.style.display = "none";
-    this.gameOver.style.display = "block";
+    this.gameOverScreen.style.display = "block";
     this.updateBestScore(score);
     this.finalScoreDisplay.innerText = score;
   }
 
   createLive() {
     const lives = document.getElementById("lives");
-    const live = document.createElement("li");
-    lives.appendChild(live);
+    const life = document.createElement("li");
+    lives.appendChild(life);
     const heart = document.createElement("i");
     heart.setAttribute("class", "fas fa-heart");
-    live.appendChild(heart);
+    life.appendChild(heart);
   }
 
   restartGame() {
     const score = document.getElementById("score");
     score.innerText = "Score: ";
-    this.gameOver.style.display = "none";
+    this.gameOverScreen.style.display = "none";
+    const maximumNumberOfLives = 3;
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < maximumNumberOfLives; i++) {
       this.createLive();
     }
     this.startGame();
