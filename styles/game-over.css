@@ -3,14 +3,14 @@
   text-align: center;
 }
 
-.game-over h2 {
+.game-over > * {
+  margin: 0 auto;
   margin-bottom: 20px;
 }
 
 
 #dead-cat {
   width: 120px;
-  margin-bottom: 10px;
 }
 
 @media (min-width: 768px) {
